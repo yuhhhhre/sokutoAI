@@ -10,8 +10,16 @@ main←メインブランチ
  ├── feat/user-profile←ブランチ
  ├── fix/login-error←ブランチ
  └── chore/update-deps←ブランチ
-ブランチに機能を分けて作って、メインにマージする
+---ブランチに機能を分けて作って、メインにマージする
+
+# mainを最新にする
+git switch main
+git pull origin main
 
 # ブランチを作る
 git switch -c feat/login
 
+# 対象のブランチにプッシュする
+git push -u origin test/readme-update
+
+# 
