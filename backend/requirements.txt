@@ -1,0 +1,4 @@
+Django>=5.2,<5.3
+pypdf>=5,<7
+requests>=2.32,<3
+python-dotenv>=1.0,<2

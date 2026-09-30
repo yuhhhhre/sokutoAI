@@ -1,0 +1,72 @@
+export type User = {
+  id: number;
+  username: string;
+  display_name: string;
+  role: "admin" | "member";
+  team_name: string;
+  is_active: boolean;
+};
+export type Features = {
+  answer_mode: "local" | "openai";
+  transcription_available: boolean;
+  transcription_mode: "whisper" | "openai" | "disabled";
+  transcription_label: string;
+  transcription_timeout_ms: number;
+  real_data_allowed: boolean;
+  demo_login_available: boolean;
+  max_upload_mb: number;
+};
+export type Citation = {
+  id: string;
+  document_id: string;
+  document_name: string;
+  location: string;
+  quote: string;
+  context: string;
+  version: string;
+  active: boolean;
+  is_sample: boolean;
+};
+export type Question = {
+  id: string;
+  meeting_id: string;
+  text: string;
+  source: "manual" | "transcript" | "demo";
+  status: "pending" | "searching" | "ready" | "error" | "cancelled";
+  revision: number;
+  answer: string;
+  conditions: string[];
+  missing_points: string[];
+  evidence_state: "supported" | "partial" | "missing" | "conflict" | null;
+  citations: Citation[];
+  outcome: "" | "answered" | "follow_up";
+  error: string;
+  created_at: string;
+  elapsed_ms: number | null;
+  started_at?: string | null;
+};
+export type Transcript = { id: string; text: string; created_at: string };
+export type Meeting = {
+  id: string;
+  title: string;
+  mode: "online" | "in_person";
+  status: "active" | "ended";
+  created_at: string;
+  question_count: number;
+  follow_up_count: number;
+  questions?: Question[];
+  transcripts?: Transcript[];
+};
+export type KnowledgeDocument = {
+  id: string;
+  name: string;
+  version: string;
+  source_type: string;
+  status: "ready" | "partial" | "failed";
+  active: boolean;
+  is_sample: boolean;
+  created_at: string;
+  chunk_count: number;
+  error: string;
+  chunks?: { id: string; text: string; location: string }[];
+};
